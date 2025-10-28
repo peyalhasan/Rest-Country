@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Country({country, handleVisitedCountry}) {
+export default function Country({country, handleVisitedCountry,handleVisitedFlags}) {
     const {name, flags, population, area, cca3} = country;
 
     const [visited, setVisted] = useState(false);
@@ -10,7 +10,7 @@ export default function Country({country, handleVisitedCountry}) {
     }
 
   return (
-    <div className={`border-2  text-start  border-green-600 p-4 ${visited && 'bg-green-500'} `}>
+    <div className={`border-2  text-start  border-green-600 p-4 ${visited && 'bg-gray-400'} `}>
         <h1 className='text-2xl font-bold' >Name: {name?.common} </h1>
         <img className='w-32' src={flags?.png} alt="" />
         <h1 className='text-2xl font-bold'  >Poputation: {population} </h1>
@@ -18,7 +18,8 @@ export default function Country({country, handleVisitedCountry}) {
         <p className='text-2xl font-semibold'><small>Code: {cca3} </small></p>
         <button onClick={() => {
           handleVisited();
-          handleVisitedCountry(country)
+          handleVisitedCountry(country);
+          handleVisitedFlags(flags?.png)
         }} className='btn btn-primary'>{visited? 'Visited' : 'Going'}</button>
         {visited ? 'I have Visited this Country' : 'I want to visit'}
         
