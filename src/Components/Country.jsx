@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Country({country}) {
-    const {name, flags} = country
-    console.log(flags)
+    const {name, flags, population, area, cca3} = country;
+
+    const [visited, setVisted] = useState(false);
+
+    const handleVisited = () =>{
+      setVisted(!visited)
+    }
+
   return (
-    <div className='border-2 border-green-600 p-3 '>
+    <div className='border-2 text-start  border-green-600 p-4  '>
         <h1 className='text-2xl font-bold' >Name: {name?.common} </h1>
-        <img src={flags?.png} alt="" />
+        <img className='w-32' src={flags?.png} alt="" />
+        <h1 className='text-2xl font-bold'  >Poputation: {population} </h1>
+        <h1 className='text-2xl font-bold'  >Area: {area} </h1>
+        <p className='text-2xl font-semibold'><small>Code: {cca3} </small></p>
+        <button onClick={handleVisited} className='btn btn-primary'>{visited? 'Visited' : 'Going'}</button>
+        {visited && 'I have Visited this Country'}
     </div>
   )
 }

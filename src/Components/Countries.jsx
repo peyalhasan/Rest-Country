@@ -11,11 +11,13 @@ export default function Countries() {
     },[])
 
   return (
-    <div>
-        <h1>Counrties: {courtries.length} </h1>
+    <div >
+        <h1 className='text-xl font-semibold'>Counrties: {courtries.length} </h1>
+        <div className=' grid grid-cols-1 md:grid-cols-3 gap-5 '>
         {
             courtries.map((country, ind) =><Country key={ind} country={country}></Country>)
         }
+        </div>
     </div>
   )
 }
